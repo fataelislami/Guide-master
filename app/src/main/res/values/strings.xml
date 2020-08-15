@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Guide</string>
+    <string name="banner_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="interstitial_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="admob_app_id">ca-app-pub-8415571729575258~4091408851</string>
+
+</resources>
