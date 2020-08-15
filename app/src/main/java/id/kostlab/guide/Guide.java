@@ -81,7 +81,7 @@ public class Guide extends AppCompatActivity {
                 Log.d("TAG", "The interstitial wasn't loaded yet.");
             }
         }
-        if(i<=data.length){
+        if(i<content.guideList().size()){
             data=content.guideList().get(i);
             txtGuideTitle.setText(data[0]);
             txtGuideDesc.setText(data[1]);

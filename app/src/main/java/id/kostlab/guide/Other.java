@@ -81,7 +81,7 @@ public class Other extends AppCompatActivity {
                 Log.d("TAG", "The interstitial wasn't loaded yet.");
             }
         }
-        if(i<=data.length){
+        if(i<content.otherList().size()){
             data=content.otherList().get(i);
             txtOtherTitle.setText(data[0]);
             txtOtherDesc.setText(data[1]);
