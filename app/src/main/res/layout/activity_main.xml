@@ -12,19 +12,20 @@
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="272dp"
         android:layout_marginEnd="100dp"
         android:background="@drawable/button"
-        android:text="START"
-        android:letterSpacing="0.02"
-        android:textColor="#2B95E3"
-        android:textStyle="bold"
         android:fontFamily="@font/russoone"
+        android:letterSpacing="0.02"
+        android:text="START"
+        android:textColor="#2B95E3"
         android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.394" />
 
     <Button
         android:id="@+id/btnOther"
