@@ -1,7 +1,18 @@
 <resources>
     <string name="app_name">Guide</string>
+    <!--
+    Ads Option
+    isi true jika ingin menampilkan iklan admob
+    isi true jika ingin menampilkan iklan startapp
+    untuk menonaktifkannya isi false
+     -->
+    <string name="admobOpt">false</string>
+    <string name="startappOpt">true</string>
+    <!--    Google Admob Config -->
     <string name="banner_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="interstitial_id">ca-app-pub-3940256099942544/1033173712</string>
     <string name="admob_app_id">ca-app-pub-8415571729575258~4091408851</string>
+    <!--    Startapp Ads Config-->
+    <string name="start_app_id">207809896</string>
 
 </resources>

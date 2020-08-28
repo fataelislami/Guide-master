@@ -16,6 +16,7 @@ import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.startapp.sdk.adsbase.StartAppAd;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -38,12 +39,25 @@ public class Guide extends AppCompatActivity {
     String[] data;
     private AdView mAdView;
     private InterstitialAd mInterstitialAd;
+
+
     Content content;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guide);
         ButterKnife.bind(this);
+        //        Init Intent
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                i= 0;
+            } else {
+                i= extras.getInt("page");
+            }
+        } else {
+            i= (Integer) savedInstanceState.getSerializable("page");
+        }
 //        Init Ads
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
@@ -74,13 +88,26 @@ public class Guide extends AppCompatActivity {
     }
     @OnClick(R.id.btnGuideNext)
     public void next(){
+        String startappOption = getString(R.string.startappOpt);
+        String admobOption = getString(R.string.admobOpt);
         if(i%2==0){
-            if (mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-            } else {
-                Log.d("TAG", "The interstitial wasn't loaded yet.");
+            if(startappOption.equals("true")){
+                StartAppAd.showAd(this);
+            }
+            if(admobOption.equals("true")){
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                } else {
+                    Log.d("TAG", "The interstitial wasn't loaded yet.");
+                }
             }
         }
+//        if(i%3==0){
+//            Intent intent = new Intent(Guide.this, Guide.class);
+//            int page = i;
+//            intent.putExtra("page", page);
+//            startActivity(intent);
+//        }
         if(i<content.guideList().size()){
             data=content.guideList().get(i);
             txtGuideTitle.setText(data[0]);
