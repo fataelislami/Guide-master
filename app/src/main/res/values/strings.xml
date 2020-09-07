@@ -6,8 +6,8 @@
     isi true jika ingin menampilkan iklan startapp
     untuk menonaktifkannya isi false
      -->
-    <string name="admobOpt">false</string>
-    <string name="startappOpt">true</string>
+    <string name="admobOpt">true</string>
+    <string name="startappOpt">false</string>
     <!--    Google Admob Config -->
     <string name="banner_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="interstitial_id">ca-app-pub-3940256099942544/1033173712</string>
