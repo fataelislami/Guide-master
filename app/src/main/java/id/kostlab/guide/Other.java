@@ -17,6 +17,7 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.startapp.sdk.adsbase.StartAppAd;
+import com.startapp.sdk.adsbase.StartAppSDK;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -45,6 +46,8 @@ public class Other extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_other);
         ButterKnife.bind(this);
+        String startappOption = getString(R.string.startappOpt);
+        String admobOption = getString(R.string.admobOpt);
         //        Init Intent
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
@@ -56,20 +59,26 @@ public class Other extends AppCompatActivity {
         } else {
             i= (Integer) savedInstanceState.getSerializable("page");
         }
+        if(admobOption.equals("true")) {
 //        Init Ads
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
 //        Init Banner
-        mAdView = findViewById(R.id.bannerOther);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+            mAdView = findViewById(R.id.bannerOther);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
 //        Init Interstitial
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(getString(R.string.interstitial_id));
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+            mInterstitialAd = new InterstitialAd(this);
+            mInterstitialAd.setAdUnitId(getString(R.string.interstitial_id));
+            mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        }
+//        Init Startapp
+        if(startappOption.equals("true")) {
+            StartAppSDK.init(this, getString(R.string.start_app_id), true);
+        }
 //        Init Data
         content=new Content();
         data=content.otherList().get(i);

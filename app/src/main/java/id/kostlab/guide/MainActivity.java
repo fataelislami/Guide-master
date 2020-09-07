@@ -14,6 +14,7 @@ import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.startapp.sdk.adsbase.StartAppSDK;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,17 +33,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
+        String startappOption = getString(R.string.startappOpt);
+        String admobOption = getString(R.string.admobOpt);
+        if(admobOption.equals("true")) {
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
 //        Banner
-        mAdView = findViewById(R.id.bannerMain);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-//        Inter
-
+            mAdView = findViewById(R.id.bannerMain);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+        }
+//        Init Startapp
+        if(startappOption.equals("true")) {
+            StartAppSDK.init(this, getString(R.string.start_app_id), true);
+        }
     }
     @OnClick(R.id.btnGuide)
     public void openGuide(){
